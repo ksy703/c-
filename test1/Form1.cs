@@ -120,7 +120,7 @@ namespace test1
 
 
                 //c:\test.txt 파일을 읽어 sr에 저장
-                StreamReader sr = ReadFile(filePath, "test.txt");
+                StreamReader sr = ReadFile(filePath, fileName);
                 if (sr != null)
                 {
                     //ReadToEnd 메소드 호출
@@ -130,7 +130,7 @@ namespace test1
                 }
 
                 //c:\test.txt 파일을 읽어 sr에 저장
-                sr = ReadFile(filePath, "test.txt");
+                sr = ReadFile(filePath,fileName);
                 if (sr != null)
                 {
                     //ReadLine 메소드 호출
@@ -150,10 +150,34 @@ namespace test1
 
             else if (dr == DialogResult.Cancel)
             {
+                Console.WriteLine("cancel");
                 return "";
 
             }
             return "";
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            if (button2.Text == "login")
+            {
+                if (f.ShowDialog() == DialogResult.OK)
+                {
+                    button2.Text = "logout";
+                    textBox1.Text = "성공";
+                }
+                else
+                {
+                    textBox1.Text = "실패";
+                }
+                f.Dispose();
+            }
+            else
+            {
+                textBox1.Text = "로그아웃";
+                button2.Text = "login";
+            }
         }
     }
 }
